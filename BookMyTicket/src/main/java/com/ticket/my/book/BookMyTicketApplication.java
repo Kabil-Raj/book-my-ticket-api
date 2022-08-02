@@ -18,5 +18,4 @@ public class BookMyTicketApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BookMyTicketApplication.class, args);
 	}
-
 }

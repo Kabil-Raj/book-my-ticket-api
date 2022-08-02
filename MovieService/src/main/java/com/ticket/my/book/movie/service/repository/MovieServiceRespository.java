@@ -19,5 +19,6 @@ public interface MovieServiceRespository extends JpaRepository<Movie, Long>{
 	List<Movie> findTrendingMovies();
 	
 //	where genre like %?1%
+	
 
 }
