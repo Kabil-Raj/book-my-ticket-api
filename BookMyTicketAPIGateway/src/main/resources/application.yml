@@ -1,0 +1,20 @@
+server:
+  port: 8887
+ 
+spring:
+  application:
+    name: BookMyTicketAPIGateway
+  config:
+    import: configserver:http://localhost:8080
+  cloud:
+    gateway:
+      routes:
+        - id: BookMyTicketService
+          uri: lb://BookMyTicketService
+          predicates:
+            - Path=/user/**
+        - id: MovieService
+          uri: lb://MovieService
+          predicates:
+            - Path=/movies/**
+        
