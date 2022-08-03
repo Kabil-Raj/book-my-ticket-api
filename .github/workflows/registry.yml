@@ -23,5 +23,12 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file BookMyTicketServiceRegistry/pom.xml
+      
     - name: Execute Jar File
-      run: java -jar /home/ubuntu/book-my-ticket-api-runner/_work/book-my-ticket-api/book-my-ticket-api/BookMyTicketServiceRegistry/target/*.jar
+      run: sudo java -jar /home/ubuntu/book-my-ticket-api-runner/_work/book-my-ticket-api/book-my-ticket-api/BookMyTicketServiceRegistry/target/*.jar
+      
+    - name: Build with Maven
+      run: mvn -B package --file BookMyTicketConfigServer/pom.xml
+      
+    - name: Execute Jar File
+      run: sudo java -jar /home/ubuntu/book-my-ticket-api-runner/_work/book-my-ticket-api/book-my-ticket-api/BookMyTicketConfigServer/target/*.jar
