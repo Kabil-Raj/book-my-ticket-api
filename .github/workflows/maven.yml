@@ -24,28 +24,13 @@ jobs:
     - name: Build with Maven
       run: mvn package --file BookMyTicketServiceRegistry/pom.xml
 
-    - name: Execute Jar File
-      run: java -jar /home/ubuntu/book-my-ticket-api-runner/_work/book-my-ticket-api/book-my-ticket-api/BookMyTicketServiceRegistry/target/*.jar
+#     - name: Execute Jar File
+#       run: java -jar /home/ubuntu/book-my-ticket-api-runner/_work/book-my-ticket-api/book-my-ticket-api/BookMyTicketServiceRegistry/target/*.jar
 
     - name: Build with Maven
       run: mvn package --file BookMyTicketConfigServer/pom.xml
-    - name: Execute Jar File
-      run: java -jar /home/ubuntu/book-my-ticket-api-runner/_work/book-my-ticket-api/book-my-ticket-api/BookMyTicketConfigServer/target/*.jar
-
-    - name: Build with Maven
-      run: mvn package --file BookMyTicketAPIGateway/pom.xml
-
-    - name: Execute Jar File
-      run: java -jar /home/ubuntu/book-my-ticket-api-runner/_work/book-my-ticket-api/book-my-ticket-api/BookMyTicketAPIGateway/target/*.jar
-
-    - name: Build with Maven
-      run: mvn package --file BookMyTicket/pom.xml
-
-    - name: Execute Jar File
-      run: java -jar /home/ubuntu/book-my-ticket-api-runner/_work/book-my-ticket-api/book-my-ticket-api/BookMyTicket/target/*.jar
-
-    - name: Build with Maven
-      run: mvn package --file MovieService/pom.xml
       
-    - name: Execute Jar File
-      run: java -jar /home/ubuntu/book-my-ticket-api-runner/_work/book-my-ticket-api/book-my-ticket-api/MovieService/target/*.jar
+#     - name: Execute Jar File
+#       run: java -jar /home/ubuntu/book-my-ticket-api-runner/_work/book-my-ticket-api/book-my-ticket-api/BookMyTicketConfigServer/target/*.jar
+
+   
