@@ -30,7 +30,9 @@ jobs:
     - name: Build with Maven
       run: mvn package --file BookMyTicketConfigServer/pom.xml
       
-#     - name: Execute Jar File
-#       run: java -jar /home/ubuntu/book-my-ticket-api-runner/_work/book-my-ticket-api/book-my-ticket-api/BookMyTicketConfigServer/target/*.jar
+    - name: Execute Jar File
+      run: java -jar /home/ubuntu/book-my-ticket-api-runner/_work/book-my-ticket-api/book-my-ticket-api/BookMyTicketServiceRegistry/target/*.jar &
+           java -jar /home/ubuntu/book-my-ticket-api-runner/_work/book-my-ticket-api/book-my-ticket-api/BookMyTicketConfigServer/target/*.jar &
+
 
    
