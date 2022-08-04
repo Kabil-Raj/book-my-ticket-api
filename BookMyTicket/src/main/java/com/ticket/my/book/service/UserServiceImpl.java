@@ -2,6 +2,8 @@ package com.ticket.my.book.service;
 
 
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -11,10 +13,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.ticket.my.book.reposiotry.TicketBookedRepository;
 import com.ticket.my.book.reposiotry.UserRepository;
 import com.ticket.my.book.security.UserDetailsAuthenticationService;
 import com.ticket.my.book.service.jwt.JwtTokenUtil;
-import com.ticket.my.book.user.User;
+import com.ticket.my.book.custom.exception.UserNotFoundException;
+import com.ticket.my.book.model.TicketBooked;
+import com.ticket.my.book.model.User;
 import com.ticket.my.book.user.credentials.UserCredential;
 
 @Service
@@ -28,6 +33,9 @@ public class UserServiceImpl {
 
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	private TicketBookedRepository ticketBookRepo;
 
 	@Autowired
 	private PasswordEncoder bcryptEncoder;
@@ -67,5 +75,10 @@ public class UserServiceImpl {
 		} 
 
 	}
+
+        public void bookTicket(TicketBooked ticketDetails) {
+            ticketDetails.setTicketIssuedDate(new Date());
+            ticketBookRepo.save(ticketDetails);
+        }
 
 }

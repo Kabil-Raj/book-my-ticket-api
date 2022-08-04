@@ -3,7 +3,8 @@ package com.ticket.my.book.reposiotry;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.ticket.my.book.user.User;
+import com.ticket.my.book.model.User;
+
 
 public interface UserRepository extends JpaRepository<User, Long>{
 

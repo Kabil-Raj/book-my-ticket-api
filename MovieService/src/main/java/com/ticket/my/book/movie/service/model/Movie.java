@@ -30,5 +30,7 @@ public class Movie {
 	private double rating;
 	
 	private String genre;	
+	
+	private String image;
 		
 }

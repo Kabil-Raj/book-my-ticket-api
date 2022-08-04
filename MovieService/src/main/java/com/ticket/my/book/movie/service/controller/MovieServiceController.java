@@ -16,7 +16,6 @@ import com.ticket.my.book.movie.service.model.Movie;
 
 @RestController
 @RequestMapping("/movies")
-@CrossOrigin(origins = "http://localhost:3000")
 public class MovieServiceController {
 	
 	@Autowired

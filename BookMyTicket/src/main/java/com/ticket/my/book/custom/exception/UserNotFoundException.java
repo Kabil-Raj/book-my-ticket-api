@@ -1,4 +1,4 @@
-package com.ticket.my.book.service;
+package com.ticket.my.book.custom.exception;
 
 public class UserNotFoundException extends Exception {
 

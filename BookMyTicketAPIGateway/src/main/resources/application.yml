@@ -17,4 +17,20 @@ spring:
           uri: lb://MovieService
           predicates:
             - Path=/movies/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders:
+              - Content-Type
+              - Authorization
+              - Origin
+            allowedMethods:
+              - GET
+              - POST
+              - OPTIONS
+              - DELETE
+              - PUT
+#Authorization, x-xsrf-token, Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, " +
+#            ", Access-Control-Request-Method, Access-Control-Request-Headers
         

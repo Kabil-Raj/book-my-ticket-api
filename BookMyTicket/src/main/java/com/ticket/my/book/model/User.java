@@ -1,4 +1,4 @@
-package com.ticket.my.book.user;
+package com.ticket.my.book.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

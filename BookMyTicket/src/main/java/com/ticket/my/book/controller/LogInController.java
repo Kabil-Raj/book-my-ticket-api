@@ -1,4 +1,4 @@
-package com.ticket.my.book.login.controller;
+package com.ticket.my.book.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,7 +11,6 @@ import com.ticket.my.book.service.UserServiceImpl;
 import com.ticket.my.book.user.credentials.UserCredential;
 
 @RestController
-@CrossOrigin( origins = "http://localhost:3000")
 @RequestMapping("/user")
 public class LogInController {
 	

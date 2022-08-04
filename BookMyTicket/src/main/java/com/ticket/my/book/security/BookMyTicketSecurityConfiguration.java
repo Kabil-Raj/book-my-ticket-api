@@ -37,9 +37,10 @@ public class BookMyTicketSecurityConfiguration  {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable().authorizeHttpRequests(
-				request -> request.antMatchers("/login/").permitAll()
-					.antMatchers("/signup/").permitAll()
+				request -> request.antMatchers("/user/login").permitAll()
+					.antMatchers("/user/signup").permitAll()
 					.anyRequest().authenticated());
+		System.out.println(" http  " +http.toString());
 		http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 		return http.build();
 	}

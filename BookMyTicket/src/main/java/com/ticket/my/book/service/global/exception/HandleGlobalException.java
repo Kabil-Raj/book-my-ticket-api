@@ -6,7 +6,8 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.ticket.my.book.service.UserNotFoundException;
+import com.ticket.my.book.custom.exception.UserNotFoundException;
+
 
 @ControllerAdvice
 public class HandleGlobalException {
