@@ -50,4 +50,4 @@ jobs:
           MAVEN_USERNAME: ${{secrets.DOCKER_USERNAME}}
           MAVEN_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
 
-  Deploy:    
+  # Deploy:    

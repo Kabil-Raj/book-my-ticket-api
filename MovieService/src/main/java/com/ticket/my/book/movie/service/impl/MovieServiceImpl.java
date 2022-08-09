@@ -22,10 +22,7 @@ public class MovieServiceImpl {
 	public Movie getMovie(long movieId) {
 		return movieServiceRepo.findById(movieId).get();
 	}
-
-	public void bookTicket(String userName, String movieName, int noOfTickets) {
-		
-	}
+	
 
 	public List<Movie> getMovieListsByGenre(String movieGenre) {
 		return movieServiceRepo.findByMovieGenere(movieGenre);
@@ -68,7 +65,7 @@ public class MovieServiceImpl {
 				.rating(9.5).year(2021).genre("Drama").build());
 		movie.add(Movie.builder().name("Oh my Kadavulae").description("East Indian aerospace engineer Nambi Narayanan "
 				+ "makes enemies due to his genius and obsession, "
-				+ "and he faces charges of espionage.").image("https://wallpapercave.com/wp/wp5927216.jpg")
+				+ "and he faces charges of espionage.").image("https://m.media-amazon.com/images/M/MV5BMWNiMGI4ZmUtNDYzYi00Nzc0LWIzNDUtNDQ0NDYwNzM5NmIwXkEyXkFqcGdeQXVyMTEwNjA3NjE1._V1_.jpg")
 				.rating(7.1).year(2019).genre("Romance").build());
 		movie.add(Movie.builder().name("Spiderman - No Way Home").description("Thor embarks on a journey unlike "
 				+ "anything he's ever faced -- a quest for inner peace. However, his retirement gets "
@@ -84,7 +81,6 @@ public class MovieServiceImpl {
 		for (Movie mov : movie) {
 			movieServiceRepo.save(mov);
 		}
-		
 		
 	}
 	
