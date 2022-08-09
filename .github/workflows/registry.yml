@@ -11,24 +11,43 @@ on:
 jobs:
   build:
 
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up JDK 8
+    - name: Set up JDK 1.8
       uses: actions/setup-java@v3
       with:
-        java-version: '8'
-        distribution: 'temurin'
+        java-version: '1.8'
+        server-id: docker.io
+        server-username: MAVEN_USERNAME
+        server-password: MAVEN_PASSWORD
         cache: maven
+        
     - name: Build with Maven
-      run: mvn -B package --file BookMyTicketServiceRegistry/pom.xml
-      
-    - name: Execute Jar File
-      run: sudo java -jar /home/ubuntu/book-my-ticket-api-runner/_work/book-my-ticket-api/book-my-ticket-api/BookMyTicketServiceRegistry/target/*.jar
-      
+      run: mvn package dockerfile:psuh --file BookMyTicketServiceRegistry/pom.xml
+      env:
+          MAVEN_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          MAVEN_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
     - name: Build with Maven
-      run: mvn -B package --file BookMyTicketConfigServer/pom.xml
-      
-    - name: Execute Jar File
-      run: sudo java -jar /home/ubuntu/book-my-ticket-api-runner/_work/book-my-ticket-api/book-my-ticket-api/BookMyTicketConfigServer/target/*.jar
+      run: mvn package dockerfile:psuh --file BookMyTicketConfigServer/pom.xml
+      env:
+          MAVEN_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          MAVEN_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+    - name: Build with Maven
+      run: mvn package dockerfile:psuh --file BookMyTicketAPIGateway/pom.xml
+      env:
+          MAVEN_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          MAVEN_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+    - name: Build with Maven
+      run: mvn package dockerfile:psuh --file BookMyTicket/pom.xml
+      env:
+          MAVEN_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          MAVEN_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+    - name: Build with Maven
+      run: mvn package dockerfile:psuh --file MovieService/pom.xml
+      env:
+          MAVEN_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          MAVEN_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+
+  Deploy:    
