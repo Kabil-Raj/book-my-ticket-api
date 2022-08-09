@@ -101,7 +101,7 @@
           			</execution>
 				</executions>
 				<configuration>
-					<repository>kabilapplications-${project.artifactId}</repository>
+					<repository>kabilapplications/book-my-ticket-movie-service</repository>
 					<tag>${project.version}</tag>
 					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
 					<buildArgs>

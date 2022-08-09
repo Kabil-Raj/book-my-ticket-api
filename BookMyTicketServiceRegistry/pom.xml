@@ -61,7 +61,7 @@
           			</execution>
 				</executions>
 				<configuration>
-					<repository>kabilapplications-${project.artifactId}</repository>
+					<repository>kabilapplications/book-my-ticket-service-registry</repository>
 					<tag>${project.version}</tag>
 					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
 					<buildArgs>
