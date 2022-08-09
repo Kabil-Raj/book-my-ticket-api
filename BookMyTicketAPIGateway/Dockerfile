@@ -1,4 +1,4 @@
-FROM openjdk:1.8
+FROM openjdk:8
 ARG JAR_FILE=target/BookMyTicketAPIGateway-1.0.jar
 WORKDIR /opt/app
 COPY ${JAR_FILE} app.jar
