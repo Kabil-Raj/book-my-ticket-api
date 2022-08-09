@@ -26,27 +26,27 @@ jobs:
         cache: maven
         
     - name: Build with Maven
-      run: mvn package dockerfile:psuh --file BookMyTicketServiceRegistry/pom.xml
+      run: mvn package dockerfile:push --file BookMyTicketServiceRegistry/pom.xml
       env:
           MAVEN_USERNAME: ${{secrets.DOCKER_USERNAME}}
           MAVEN_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
     - name: Build with Maven
-      run: mvn package dockerfile:psuh --file BookMyTicketConfigServer/pom.xml
+      run: mvn package dockerfile:push --file BookMyTicketConfigServer/pom.xml
       env:
           MAVEN_USERNAME: ${{secrets.DOCKER_USERNAME}}
           MAVEN_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
     - name: Build with Maven
-      run: mvn package dockerfile:psuh --file BookMyTicketAPIGateway/pom.xml
+      run: mvn package dockerfile:push --file BookMyTicketAPIGateway/pom.xml
       env:
           MAVEN_USERNAME: ${{secrets.DOCKER_USERNAME}}
           MAVEN_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
     - name: Build with Maven
-      run: mvn package dockerfile:psuh --file BookMyTicket/pom.xml
+      run: mvn package dockerfile:push --file BookMyTicket/pom.xml
       env:
           MAVEN_USERNAME: ${{secrets.DOCKER_USERNAME}}
           MAVEN_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
     - name: Build with Maven
-      run: mvn package dockerfile:psuh --file MovieService/pom.xml
+      run: mvn package dockerfile:push --file MovieService/pom.xml
       env:
           MAVEN_USERNAME: ${{secrets.DOCKER_USERNAME}}
           MAVEN_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
