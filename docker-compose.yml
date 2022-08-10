@@ -1,0 +1,50 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_DATABASE = root
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - '3306:3306'
+    volumes:
+      - db:/var/lib/mysql
+      - ./db/init.sql/docker-entrypoint-initdb.d/init.sql
+  book-my-ticket-registry:
+    image: kabilapplications/book-my-ticket-service-registry:latest
+    ports:
+      - '8761:8761'
+  book-my-ticket-config-server:
+    image: kabilapplications/book-my-ticket-config-server:latest
+    ports:
+      - '8080:8080'
+  book-my-ticket-api-gateway:
+    image: kabilapplications/book-my-ticket-api-gateway:latest
+    ports:
+      - '80:80'
+    depends_on:
+      - book-my-ticket-registry
+      - book-my-ticket-config-server
+  book-my-ticket-user-service:
+    image: kabilapplications/book-my-ticket-user-service:latest
+    ports:
+      - '8888:8888'
+    depends_on:
+      - book-my-ticket-registry
+      - book-my-ticket-config-server
+      - book-my-ticket-api-gateway
+      - mysql
+  book-my-ticket-movie-service:
+    image: kabilapplications/book-my-ticket-movie-service:latest
+    ports:
+      - '8889:8889'
+    depends_on:
+      - book-my-ticket-registry
+      - book-my-ticket-config-server
+      - book-my-ticket-api-gateway
+      - mysql
+
+volumes:
+  mysql:
+    driver: local
