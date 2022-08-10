@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableConfigServer
 public class BookMyTicketApiGatewayApplication {
 
 	public static void main(String[] args) {
