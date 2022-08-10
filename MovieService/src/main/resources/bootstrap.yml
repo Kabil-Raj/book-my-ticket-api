@@ -1,5 +1,4 @@
 spring:
-  cloud:
-    config:
-      enabled: true
-      import: configserver:http://localhost:8080
+  config:
+    enabled: true
+    import: configserver:http://localhost:8080
