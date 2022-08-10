@@ -4,8 +4,6 @@ server:
 spring:
   application:
     name: BookMyTicketAPIGateway
-  config:
-    import: configserver:http://book-my-ticket-config-server:8080
   cloud:
     gateway:
       routes:

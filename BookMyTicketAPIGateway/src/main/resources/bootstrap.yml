@@ -1,0 +1,3 @@
+spring:
+  config:
+    import: configserver:http://book-my-ticket-config-server:8080
