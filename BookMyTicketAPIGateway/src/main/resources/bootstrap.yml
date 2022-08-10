@@ -1,4 +1,3 @@
 spring:
   config:
-    enabled: true
     import: configserver:http://localhost:8080
