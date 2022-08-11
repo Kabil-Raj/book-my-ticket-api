@@ -4,45 +4,54 @@ services:
     image: mysql:8.0
     restart: always
     environment:
-      - MYSQL_DATABASE = root
+      - MYSQL_DATABASE=BookMyTicket
       - MYSQL_ROOT_PASSWORD=password
     ports:
       - '3306:3306'
     volumes:
-      - db:/var/lib/mysql
-      - ./db/init.sql/docker-entrypoint-initdb.d/init.sql
-  book-my-ticket-registry:
-    image: kabilapplications/book-my-ticket-service-registry:latest
+      - mysql:/var/lib/mysql
+      - ./mysql/init.sql/docker-entrypoint-initdb.d/init.sql
+
+  bmt-registry:
+    image: kabilapplications/book-my-ticket-service-registry:1.0
     ports:
       - '8761:8761'
-  book-my-ticket-config-server:
-    image: kabilapplications/book-my-ticket-config-server:latest
+    depends_on:
+      - mysql
+
+  bmt-config-server:
+    image: kabilapplications/book-my-ticket-config-server:1.0
     ports:
       - '8080:8080'
-  book-my-ticket-api-gateway:
-    image: kabilapplications/book-my-ticket-api-gateway:latest
+    depends_on:
+      - "bmt-registry"
+
+  bmt-api-gateway:
+    image: kabilapplications/book-my-ticket-api-gateway:1.0
     ports:
       - '80:80'
     depends_on:
-      - book-my-ticket-registry
-      - book-my-ticket-config-server
+      - "bmt-registry"
+      - "bmt-config-server"
+
   book-my-ticket-user-service:
-    image: kabilapplications/book-my-ticket-user-service:latest
+    image: kabilapplications/book-my-ticket-user-service:1.0
     ports:
       - '8888:8888'
     depends_on:
-      - book-my-ticket-registry
-      - book-my-ticket-config-server
-      - book-my-ticket-api-gateway
+      - "bmt-registry"
+      - "bmt-config-server"
+      - "bmt-api-gateway"
       - mysql
+
   book-my-ticket-movie-service:
-    image: kabilapplications/book-my-ticket-movie-service:latest
+    image: kabilapplications/book-my-ticket-movie-service:1.0
     ports:
       - '8889:8889'
     depends_on:
-      - book-my-ticket-registry
-      - book-my-ticket-config-server
-      - book-my-ticket-api-gateway
+      - "bmt-registry"
+      - "bmt-config-server"
+      - "bmt-api-gateway"
       - mysql
 
 volumes:
