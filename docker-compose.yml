@@ -30,6 +30,7 @@ services:
     image: kabilapplications/book-my-ticket-api-gateway:1.0
     ports:
       - '80:80'
+    restart: always  
     depends_on:
       - "bmt-registry"
       - "bmt-config-server"
@@ -38,6 +39,7 @@ services:
     image: kabilapplications/book-my-ticket-user-service:1.0
     ports:
       - '8888:8888'
+    restart: always
     depends_on:
       - "bmt-registry"
       - "bmt-config-server"
@@ -48,6 +50,7 @@ services:
     image: kabilapplications/book-my-ticket-movie-service:1.0
     ports:
       - '8889:8889'
+    restart: always 
     depends_on:
       - "bmt-registry"
       - "bmt-config-server"
