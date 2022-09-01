@@ -52,12 +52,8 @@ jobs:
           MAVEN_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
 
   Deploy:   
-    needs: [build]
+    needs: build
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        docker_version: [18.x,19.x, 20.x]
     
     steps:
     - name: start containers
