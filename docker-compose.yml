@@ -34,7 +34,7 @@ services:
       - "bmt-registry"
       - "bmt-config-server"
 
-  book-my-ticket-user-service:
+  bmt-user-service:
     image: kabilapplications/book-my-ticket-user-service:1.0
     ports:
       - '8888:8888'
@@ -44,7 +44,7 @@ services:
       - "bmt-api-gateway"
       - mysql
 
-  book-my-ticket-movie-service:
+  bmt-movie-service:
     image: kabilapplications/book-my-ticket-movie-service:1.0
     ports:
       - '8889:8889'
@@ -53,6 +53,13 @@ services:
       - "bmt-config-server"
       - "bmt-api-gateway"
       - mysql
+  btm-ui-service:
+    image: kabilapplications/book-my-ticket-ui:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - "bmt-user-service"
+      - "bmt-movie-service"
 
 volumes:
   mysql:
